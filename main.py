@@ -1,7 +1,7 @@
 import discord
 import random
 #257304967981826049
-TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXX'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXX'
 contadorGumbChato = 0
 
 client = discord.Client()
@@ -119,9 +119,13 @@ async def on_message(message):
                 for i in message.guild.voice_channels:
                     if i.name == x[1]:
                         if len(i.members) > 0:
-                            target = random.choice(i.members)
-                            msg = 'A roleta rodou e o otario da vez foi o '+ target.name + '! Ja era ramelão!'
-                            await target.edit(voice_channel=None)
+                            if message.author not in i.members:
+                                target = 1
+                                msg = 'Tu nem ta no chat e quer tirar os outros? Vai se fuder!'
+                            else:
+                                target = random.choice(i.members)
+                                msg = 'A roleta rodou e o otario da vez foi o '+ target.name + '! Ja era ramelão!'
+                                await target.edit(voice_channel=None)
                         else:
                             target = 1
                             msg = 'Ta querendo me fuder? Tem ninguem nesse chat'
@@ -143,7 +147,7 @@ async def on_message(message):
                 if not target:
                     msg = 'Foi mal mestre Filipe, não encontrei esse cria não :disappointed_relieved:'
                 else:
-                    msg = message.author.name + ' chamou o ' + target.name + ' para o duelo!\n'
+                    msg = message.author.mention+' chamou o '+target.mention+' para o duelo!\n'
                     msg = msg + ':punch::punch::punch::punch::punch::punch::punch:\n'
                     lista = []
                     lista.append(message.author)
@@ -155,8 +159,8 @@ async def on_message(message):
                     msg = msg + 'O pau ta comendo! :cloud::cloud::cloud::cloud:\n'
                     if mensagem != '':
                         eventoAleatorio = random.choice(lista)
-                        msg = msg + eventoAleatorio.name + mensagem + '\n'
-                    msg = msg + 'Mas no final quem ganhou foi o '+vencedor.name
+                        msg = msg + eventoAleatorio.mention + mensagem + '\n'
+                    msg = msg + 'Mas no final quem ganhou foi o '+vencedor.mention +' :trophy::trophy:'
                     await message.channel.send(msg)
 
 
