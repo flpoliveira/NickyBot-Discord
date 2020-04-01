@@ -1,7 +1,7 @@
 import discord
 import random
 #257304967981826049
-TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXX'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
 contadorGumbChato = 0
 
 client = discord.Client()
@@ -118,7 +118,7 @@ async def on_message(message):
                 target = None
                 for i in message.guild.voice_channels:
                     if i.name == x[1]:
-                        if len(i.members) > 0:
+                        if len(i.members) > 1:
                             if message.author not in i.members:
                                 target = 1
                                 msg = 'Tu nem ta no chat e quer tirar os outros? Vai se fuder!'
@@ -128,7 +128,7 @@ async def on_message(message):
                                 await target.edit(voice_channel=None)
                         else:
                             target = 1
-                            msg = 'Ta querendo me fuder? Tem ninguem nesse chat'
+                            msg = 'Ta querendo me fuder? Tem ninguem nesse chat, no maximo uma cabeça'
                         break
                 if not target:
                     msg = 'Não consegui encontrar a sala que você disse! Deus me deu duas bolas, nenhuma de cristal!'
