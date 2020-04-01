@@ -1,15 +1,26 @@
 import discord
+import random
 #257304967981826049
-TOKEN = 'KlMwPhdouF7YoFhDRYWSDsoXDdc3sT0U'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXX'
 
 client = discord.Client()
-
+@client.event
+async def on_member_join(member):
+    if member.guild.name == 'ProgChamp':
+        lista = []
+        lista.append(member.guild.get_role(694702413780877362))
+        await member.edit(roles=lista)
+        msg = 'Alterei o cargo do '+ member.name + ' para o de '+str(lista[0])
+        await member.guild.get_channel(694702150563004468).send(msg)
+        
+    
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
 
+    print(message.guild.roles)
     print(message.author)
     print(message)
     if(message.content.startswith('!')):
@@ -75,7 +86,25 @@ async def on_message(message):
                 else:
                     msg = 'Vai com Deus ' + target.name + '!'
                     await target.edit(voice_channel=None)
+                
+            
+            if message.content.startswith('!roletarussa'):
+                x = message.content.split(' ', 1)
+                target = None
+                for i in message.guild.voice_channels:
+                    if i.name == x[1]:
+                        target = random.choice(i.members)
+                        if not target:
+                            msg = 'Ta querendo me fuder? Tem ninguem nesse chat'
+                        else:
+                            msg = 'A roleta rodou e o otario da vez foi o '+ target.name + '! Ja era ramelão!'
+                            await target.edit(voice_channel=None)
+                        break
+                if not target:
+                    msg = 'Não consegui encontrar a sala que você disse! Deus me deu duas bolas, nenhuma de cristal!'
+        
                 await message.channel.send(msg)
+
         
 @client.event
 async def on_ready():
