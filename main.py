@@ -1,7 +1,7 @@
 import discord
 import random
-#257304967981826049
-TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
+
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 contadorGumbChato = 0
 
 client = discord.Client()
@@ -171,10 +171,7 @@ async def on_message(message):
                         msg = msg + 'Mas no final quem ganhou foi o '+vencedor.mention +' :trophy::trophy:'
                         await message.channel.send(msg)
 
-            if message.content.startswith('!FicaManu'):
-                msg = 'Vai toma no seu cu! Quer fica vendo reality sem treta? Vai ver teletubbies!'
-                await message.channel.send(msg)
-                await message.author.kick()
+
                
 
 
