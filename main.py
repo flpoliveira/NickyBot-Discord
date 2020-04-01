@@ -1,7 +1,7 @@
 import discord
 import random
 #257304967981826049
-TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXX'
+TOKEN = 'XXXXXXXXXXXX'
 
 client = discord.Client()
 @client.event
@@ -86,6 +86,7 @@ async def on_message(message):
                 else:
                     msg = 'Vai com Deus ' + target.name + '!'
                     await target.edit(voice_channel=None)
+                await message.channel.send(msg)
                 
             
             if message.content.startswith('!roletarussa'):
