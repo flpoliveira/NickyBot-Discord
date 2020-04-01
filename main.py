@@ -1,7 +1,7 @@
 import discord
 import random
 #257304967981826049
-TOKEN = 'XXXXXXXXXXXXXXXXXXXX'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXX'
 contadorGumbChato = 0
 
 client = discord.Client()
@@ -9,7 +9,7 @@ client = discord.Client()
 async def on_member_join(member):
     if member.guild.name == 'ProgChamp':
         lista = []
-        lista.append(member.guild.get_role(694702413780877362))
+        lista.append(member.guild.get_role(id=694702413780877362))
         await member.edit(roles=lista)
         msg = 'Alterei o cargo do '+ member.name + ' para o de '+str(lista[0])
         await member.guild.get_channel(694702150563004468).send(msg)
@@ -136,33 +136,46 @@ async def on_message(message):
                 await message.channel.send(msg)
             
             if message.content.startswith('!porrada'):
+
                 x = message.content.split(' ', 1)
                 target = message.guild.get_member_named(x[1])
-                mensagensAleatorios = []
-                mensagensAleatorios.append('')
-                mensagensAleatorios.append(' chute no saco nao')
-                mensagensAleatorios.append(' de arma não vale seu lixo!')
-                mensagensAleatorios.append(' tomou uma no queixo')
-                mensagensAleatorios.append(' levo uma facada no pinto')
-                if not target:
-                    msg = 'Foi mal mestre Filipe, não encontrei esse cria não :disappointed_relieved:'
-                else:
-                    msg = message.author.mention+' chamou o '+target.mention+' para o duelo!\n'
-                    msg = msg + ':punch::punch::punch::punch::punch::punch::punch:\n'
-                    lista = []
-                    lista.append(message.author)
-                    lista.append(target)
-                    vencedor = random.choice(lista)
-                    mensagem = random.choice(mensagensAleatorios)
-                    
-                   
-                    msg = msg + 'O pau ta comendo! :cloud::cloud::cloud::cloud:\n'
-                    if mensagem != '':
-                        eventoAleatorio = random.choice(lista)
-                        msg = msg + eventoAleatorio.mention + mensagem + '\n'
-                    msg = msg + 'Mas no final quem ganhou foi o '+vencedor.mention +' :trophy::trophy:'
+                if target == message.author:
+                    msg = 'Nao vou deixa você bater em si mesmo! Eu vou te quebrar na porrada!\n'
+                    msg + ':punch::punch::punch::punch::punch::punch::punch:\n'
+                    msg = msg + client.user.mention + ' deu 30 tiro de ak47 no '+ message.author.mention + '\n'
+                    msg = msg + 'Mas no final quem ganhou foi o '+client.user.mention+' :trophy::trophy:'
                     await message.channel.send(msg)
+                else:
+                    mensagensAleatorios = []
+                    mensagensAleatorios.append('')
+                    mensagensAleatorios.append(' chute no saco nao')
+                    mensagensAleatorios.append(' de arma não vale seu lixo!')
+                    mensagensAleatorios.append(' tomou uma no queixo')
+                    mensagensAleatorios.append(' levo uma facada no pinto')
+                    if not target:
+                        msg = 'Foi mal mestre Filipe, não encontrei esse cria não :disappointed_relieved:'
+                    else:
+                        msg = message.author.mention+' chamou o '+target.mention+' para o duelo!\n'
+                        msg = msg + ':punch::punch::punch::punch::punch::punch::punch:\n'
+                        lista = []
+                        lista.append(message.author)
+                        lista.append(target)
+                        vencedor = random.choice(lista)
+                        mensagem = random.choice(mensagensAleatorios)
+                        
+                    
+                        msg = msg + 'O pau ta comendo! :cloud::cloud::cloud::cloud:\n'
+                        if mensagem != '':
+                            eventoAleatorio = random.choice(lista)
+                            msg = msg + eventoAleatorio.mention + mensagem + '\n'
+                        msg = msg + 'Mas no final quem ganhou foi o '+vencedor.mention +' :trophy::trophy:'
+                        await message.channel.send(msg)
 
+            if message.content.startswith('!FicaManu'):
+                msg = 'Vai toma no seu cu! Quer fica vendo reality sem treta? Vai ver teletubbies!'
+                await message.channel.send(msg)
+                await message.author.kick()
+               
 
 
            
