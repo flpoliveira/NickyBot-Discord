@@ -1,7 +1,7 @@
 import discord
 import random
 
-TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
 contadorGumbChato = 0
 
 client = discord.Client()
